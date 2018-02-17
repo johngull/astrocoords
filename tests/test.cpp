@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include "../coords.h"
+#include "../lib/astrocoords/coords.h"
 
 TEST(Angle, FromDegreeMinuteSecond)
 {

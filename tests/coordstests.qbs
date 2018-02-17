@@ -10,8 +10,8 @@ Application
 
     files: [
         "test.cpp",
-        "../coords.h",
-        "../coords.cpp"
+        "../lib/astrocoords/coords.h",
+        "../lib/astrocoords/coords.cpp"
     ]
 
 }
