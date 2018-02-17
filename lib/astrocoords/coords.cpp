@@ -2,7 +2,6 @@
 
 #include <ctime>
 #include <cmath>
-#include <iostream>
 
 using namespace std;
 using namespace astrocoords;
