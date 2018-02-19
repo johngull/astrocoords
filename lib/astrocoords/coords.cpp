@@ -70,8 +70,8 @@ void Converter::setLocation(Angle latitude, Angle longitude)
 
 void Converter::setDateAndUTCTime(int year, int month, int day, int hour, int minute, int seconds)
 {
-    tm JS2000{0, 0, 12, 1, 0, 2000, 0};   //1200 hrs UT on Jan 1st 2000 AD
-    tm now{seconds, minute, hour, day, month-1, year, 0};   // month is 0-11 in std::tm
+    tm JS2000{0, 0, 12, 1, 0, 2000-1900, 0};   //1200 hrs UT on Jan 1st 2000 AD
+    tm now{seconds, minute, hour, day, month-1, year-1900, 0};   // month is 0-11 in std::tm, year - 1900 based
     time_t tjs2000 = mktime(&JS2000);
     time_t tnow = mktime(&now);
 
