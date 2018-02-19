@@ -1,7 +1,7 @@
 #include "coords.h"
 
-#include <ctime>
-#include <cmath>
+#include <time.h>
+#include <math.h>
 
 using namespace std;
 using namespace astrocoords;
