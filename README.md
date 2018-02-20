@@ -1,5 +1,8 @@
 # astrocoords
-Minimalistic C++ library for converting astronomical coordinates
+Minimalistic C++ library for converting astronomical coordinates.
+Its aim is to be compact to be usable in embedded systems.
+
+**Warning:** It is library user's responsibility to check input data correctness.
 
 Example of usage:
 ``` c++
