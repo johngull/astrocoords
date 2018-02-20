@@ -16,6 +16,6 @@ cconv.equatorialToHorizontal(astrocoords::Angle::fromHours(5, 14, 32.27210),
                              astrocoords::Angle::fromDegrees(-8, 12, 5.8981),
                              alt, az);
 
-//use alt.degrees() and az.degrees()
+//use alt.d() and az.d() to get altitude and azimuth in degrees
 
 ```

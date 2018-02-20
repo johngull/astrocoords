@@ -17,9 +17,9 @@ class Angle
     void calcRadians();
 public:
     Angle(float angle=0);
-    Angle(float radians, bool radiansFlag);
+    Angle(float r, bool radiansFlag);
 
-    static Angle fromDegrees(float degrees, float minutes=0, float seconds=0);
+    static Angle fromDegrees(float d, float minutes=0, float seconds=0);
     static Angle fromHours(float hours, float minutes=0, float seconds=0);
 
     /**
@@ -27,8 +27,17 @@ public:
      */
     void normalizeAngle();
 
-    float degrees();
-    float radians();
+    /**
+     * @brief d fetch angle in degrees
+     * @return angle in degrees
+     */
+    float d();
+
+    /**
+     * @brief r fetch angle in radians
+     * @return angle in radians
+     */
+    float r();
 
     friend class Converter;
 };

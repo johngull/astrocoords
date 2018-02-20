@@ -52,12 +52,12 @@ void Angle::normalizeAngle()
         calcRadians();
 }
 
-float Angle::degrees()
+float Angle::d()
 {
     return angle_;
 }
 
-float Angle::radians()
+float Angle::r()
 {
     return radians_;
 }
@@ -96,16 +96,16 @@ void Converter::setUTCDateAndTime(int year, int month, int day, int hour, int mi
 
 bool Converter::equatorialToHorizontal(Angle rightAngle, Angle declination, Angle &altitude, Angle &azimuth)
 {
-    Angle localTime = Angle(100.46f + 0.985647f * daysFromJ2000_ + longitude_.degrees() + 15*UTCtime_);
+    Angle localTime = Angle(100.46f + 0.985647f * daysFromJ2000_ + longitude_.d() + 15*UTCtime_);
     localTime.normalizeAngle();
 
-    Angle hourAngle = Angle(localTime.degrees()-rightAngle.degrees());
+    Angle hourAngle = Angle(localTime.d()-rightAngle.d());
     hourAngle.normalizeAngle();
 
-    altitude = Angle(asin( sin(declination.radians())*sin(latitude_.radians()) + cos(declination.radians())*cos(latitude_.radians())*cos(hourAngle.radians()) ), true);
+    altitude = Angle(asin( sin(declination.r())*sin(latitude_.r()) + cos(declination.r())*cos(latitude_.r())*cos(hourAngle.r()) ), true);
 
-    float A = acos( (sin(declination.radians()) - sin(altitude.radians())*sin(latitude_.radians()))/(cos(altitude.radians())*cos(latitude_.radians())) );
-    if(sin(hourAngle.radians())>=0)
+    float A = acos( (sin(declination.r()) - sin(altitude.r())*sin(latitude_.r()))/(cos(altitude.r())*cos(latitude_.r())) );
+    if(sin(hourAngle.r())>=0)
         A = 2*PI - A;
     azimuth = Angle(A, true);
 
