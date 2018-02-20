@@ -41,7 +41,7 @@ class Converter
     float UTCtime_ = 0;
 public:
     void setLocation(Angle latitude, Angle longitude);
-    void setDateAndUTCTime(int year, int month, int day, int hour, int minute, int seconds);
+    void setUTCDateAndTime(int year, int month, int day, int hour, int minute, int seconds);
 
     bool equatorialToHorizontal(Angle rightAngle, Angle declination, Angle& altitude, Angle& azimuth);
 };

@@ -5,7 +5,7 @@ Example of usage:
 ``` c++
 astrocoords::Converter cconv;
 
-//beta-orinon in Cherkasy, UA at 22:00UTC, 17th February 2018
+//beta-orion in Cherkasy, UA at 22:00UTC, 17th February 2018
 cconv.setLocation(astrocoords::Angle::fromDegrees(49, 26, 40),
                   astrocoords::Angle::fromDegrees(32, 03, 35)
                   );

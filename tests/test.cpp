@@ -44,7 +44,7 @@ TEST(Angle, NormalizeAngle)
     EXPECT_FLOAT_EQ(10, a.degrees());
 }
 
-TEST(Equatorial, EquatorialToHorizontal)
+TEST(Equatorial, EquatorialToHorizontalExample)
 {
     astrocoords::Converter cconv;
     //example from http://www.stargazing.net/kepler/altaz.html
@@ -53,7 +53,7 @@ TEST(Equatorial, EquatorialToHorizontal)
     cconv.setLocation(astrocoords::Angle::fromDegrees(52, 30),
                        astrocoords::Angle::fromDegrees(-1, 55)
                        );
-    cconv.setDateAndUTCTime(1998, 8, 10, 23, 10, 0);
+    cconv.setUTCDateAndTime(1998, 8, 10, 23, 10, 0);
 
     astrocoords::Angle alt, az;
     //Messier object M13
@@ -63,6 +63,54 @@ TEST(Equatorial, EquatorialToHorizontal)
 
     EXPECT_NEAR(49.2, alt.degrees(), 0.1);
     EXPECT_NEAR(269.1, az.degrees(), 0.1);
+}
+
+TEST(Equatorial, EquatorialToHorizontalPolar)
+{
+    astrocoords::Converter cconv;
+    //Cherkasy, UA
+    cconv.setLocation(astrocoords::Angle::fromDegrees(49, 26, 40),
+                      astrocoords::Angle::fromDegrees(32, 03, 35)
+                      );
+    //18:57UTC, 19th February 2018
+    cconv.setUTCDateAndTime(2018, 2, 19, 18, 57, 0);
+    //Polaris (alpha Ursa minor)
+    astrocoords::Angle alt, az;
+    cconv.equatorialToHorizontal(astrocoords::Angle::fromHours(2, 32),
+                                 astrocoords::Angle::fromDegrees(89, 16),
+                                 alt, az);
+
+    EXPECT_NEAR(49.716666667, alt.degrees(), 0.1);
+    EXPECT_NEAR(358.9, az.degrees(), 0.1);
+
+
+    //18:57UTC, 19th February 2018
+    cconv.setUTCDateAndTime(2018, 2, 19, 15, 50, 0);
+    //Polaris (alpha Ursa minor)
+    cconv.equatorialToHorizontal(astrocoords::Angle::fromHours(2, 32),
+                                 astrocoords::Angle::fromDegrees(89, 16),
+                                 alt, az);
+    EXPECT_NEAR(50.133333333, alt.degrees(), 0.1);
+    EXPECT_NEAR(359.6, az.degrees(), 0.1);
+}
+
+TEST(Equatorial, EquatorialToHorizontalBetaOrion)
+{
+    astrocoords::Converter cconv;
+    //Cherkasy, UA
+    cconv.setLocation(astrocoords::Angle::fromDegrees(49, 26, 40),
+                      astrocoords::Angle::fromDegrees(32, 03, 35)
+                      );
+    //18:57UTC, 19th February 2018
+    cconv.setUTCDateAndTime(2018, 2, 19, 15, 50, 0);
+    //beta-orion
+    astrocoords::Angle alt, az;
+    cconv.equatorialToHorizontal(astrocoords::Angle::fromHours(5, 14, 32.27210),
+                                 astrocoords::Angle::fromDegrees(-8, 12, 5.8981),
+                                 alt, az);
+
+    EXPECT_NEAR(29.883333333, alt.degrees(), 0.1);
+    EXPECT_NEAR(157.6, az.degrees(), 0.1);
 }
 
 
